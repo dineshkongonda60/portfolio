@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Blog Generation Agent",
+    "imageUrl": "/projects/ai-blog-generation.png",
+    "description": "An AI agent that Generates blogs using OpenAI and then deploys itself, it generates the complete blog including the html and css and also picks the image for the blog. (https://aibeyond-tech.vercel.app/)"
+  },
+  {
+    "name": "Automation Suitability Agent",
+    "imageUrl": "/projects/automation-stability-agent.png",
+    "description":"An AI Agent which takes user inputs on the As is Process and would decide which Tool is best for Automation and also estimates the Development time based on the resources available. (https://agentic-ba.vercel.app/)"
+  },
+  {
+    "name": "Intelligent Invoice Processing Pipeline",
+    "imageUrl": "/projects/invoice-pipeline.png",
+    "description": "Built an end-to-end intelligent document processing pipeline for scanned, image-based invoices using OCR and Azure Document Intelligence, orchestrated through Power Automate with a Copilot Studio agent layer. Solved enterprise file-permission and SharePoint access challenges, and integrated direct LLM API calls for line-item extraction and validation, reducing manual invoice entry time by over 70%."
+  },
+  {
+    "name": "SAP Order-to-Cash Automation Suite",
+    "imageUrl": "/projects/sap-o2c.png",
+    "description": "Architected a large-scale Automation Anywhere A360 solution automating the order-to-cash cycle inside SAP — order creation, credit checks, billing, and reconciliation. Included exception-handling bots, a control-tower dashboard, and a reusable component library that became the template for the automation CoE."
+  },
+  {
+    "name": "Agentic Claims Triage System",
+    "imageUrl": "/projects/agentic-claims.png",
+    "description": "Designed an agentic AI workflow for a healthcare client that triages incoming insurance claims, cross-references policy documents via retrieval, and routes edge cases to human adjusters. Combined LLM-driven reasoning with deterministic RPA steps for compliance-safe automation in a regulated environment."
+  },
+  {
+    "name": "Salesforce CRM Lead-to-Opportunity Bot",
+    "imageUrl": "/projects/crm-bot.png",
+    "description": "Delivered an unattended UiPath automation that qualifies inbound leads in Salesforce, enriches records via third-party APIs, and assigns opportunities to the right sales rep based on territory and product rules — cutting lead response time from hours to minutes."
+  },
+  {
+    "name": "Banking Reconciliation & Fraud Flagging Engine",
+    "imageUrl": "/projects/banking-recon.png",
+    "description": "Built a high-volume transaction reconciliation engine for a banking client combining RPA-driven data extraction with rule-based and ML-assisted anomaly detection to flag suspicious transactions for review, processing tens of thousands of records daily with full audit trails."
+  },
+  {
+    "name": "Automation CoE Governance Framework",
+    "imageUrl": "/projects/coe-governance.png",
+    "description": "Established a Center of Excellence governance framework covering intake, ROI scoring, environment promotion, and bot lifecycle management across Automation Anywhere and UiPath estates — standardizing how 50+ automations were built, reviewed, and maintained."
+  }
+]
