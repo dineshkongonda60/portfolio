@@ -1,8 +1,9 @@
 .about {
   width: 100%;
-  height: 100%;
+  min-height: 100vh; /* better than fixed height */
   display: flex;
   align-items: center;
+  padding: 80px 5%; /* add breathing space */
   background: var(--bg);
   background-image:
     radial-gradient(circle at 85% 20%, rgba(34, 211, 238, 0.06), transparent 45%);
@@ -11,34 +12,35 @@
 .about__grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 6vw;
+  gap: clamp(24px, 6vw, 80px); /* fluid spacing */
   align-items: center;
 }
 
 .about__copy {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .about__title {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 6px;
-  max-width: 560px;
+  max-width: 100%;
 }
 
 .about__para {
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.7;
   color: var(--muted);
-  max-width: 540px;
+  max-width: 100%;
 }
 
+/* Strength cards grid */
 .about__strengths {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 
@@ -46,10 +48,10 @@
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 22px 18px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   transition: border-color 0.25s, transform 0.25s;
 }
 
@@ -60,23 +62,70 @@
 
 .about__strength-code {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--cyan);
 }
 
 .about__strength-label {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
+/* ✅ Tablet */
 @media (max-width: 900px) {
-  .about__grid { grid-template-columns: 1fr; gap: 32px; }
-  .about__strengths { grid-template-columns: 1fr 1fr; }
+  .about {
+    padding: 60px 6%;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about__title {
+    text-align: left;
+  }
 }
 
-@media (max-width: 520px) {
-  .about__strengths { grid-template-columns: 1fr; }
+/* ✅ Mobile */
+@media (max-width: 600px) {
+  .about {
+    padding: 50px 20px;
+    align-items: flex-start; /* better scrolling */
+  }
+
+  .about__copy {
+    gap: 14px;
+  }
+
+  .about__title {
+    font-size: 1.5rem;
+  }
+
+  .about__para {
+    font-size: 0.95rem;
+  }
+
+  .about__strengths {
+    grid-template-columns: 1fr; /* stack cards */
+    gap: 12px;
+  }
+
+  .about__strength-card {
+    padding: 16px;
+  }
+}
+
+/* ✅ Extra small devices */
+@media (max-width: 380px) {
+  .about__title {
+    font-size: 1.3rem;
+  }
+
+  .about__para {
+    font-size: 0.9rem;
+  }
 }

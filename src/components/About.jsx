@@ -3,9 +3,9 @@ import './About.css'
 
 const strengths = [
   { label: 'Automation Architecture', code: '01' },
-  { label: 'CoE Development', code: '02' },
+  { label: 'Intelligent Automation & AI', code: '02' },
   { label: 'Governance Frameworks', code: '03' },
-  { label: 'Intelligent Automation & AI', code: '04' },
+  { label: 'CoE Development', code: '04' },
 ]
 
 export default function About({ isActive }) {

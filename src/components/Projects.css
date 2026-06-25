@@ -1,47 +1,56 @@
 .projects {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  padding: 80px 5%;
   background: var(--bg);
   position: relative;
+  overflow: hidden; /* ✅ prevents bleed */
 }
 
+/* Wrapper */
 .projects__wrap {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Title */
 .projects__title {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
   font-weight: 600;
 }
 
 .projects__sub {
   color: var(--muted);
-  max-width: 560px;
   line-height: 1.6;
-  margin-top: -8px;
+  margin-top: -6px;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
 }
 
+/* ✅ GRID (Desktop) */
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-top: 4px;
+  gap: clamp(12px, 2vw, 20px);
+  margin-top: 6px;
+  align-items: stretch;
 }
 
+/* ✅ CARD */
 .projects__card {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 0;
   overflow: hidden;
-  text-align: left;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  transition: 0.25s;
+  min-height: 240px;
 }
 
 .projects__card:hover {
@@ -50,48 +59,168 @@
   box-shadow: 0 14px 32px rgba(0,0,0,0.4);
 }
 
+/* ✅ IMAGE (FIXED HEIGHT = NO STRETCH) */
 .projects__img-wrap {
   width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: contain;
+  height: 160px;
   overflow: hidden;
   background: var(--panel-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .projects__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s;
 }
 
-.projects__card:hover .projects__img { transform: scale(1.05); }
-
+/* ✅ FOOTER */
 .projects__card-foot {
-  padding: 14px 16px;
+  padding: 12px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  min-height: 50px;
 }
 
 .projects__card-name {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text);
-  line-height: 1.3;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .projects__card-arrow {
   color: var(--cyan);
   flex-shrink: 0;
-  transition: transform 0.25s;
 }
 
-.projects__card:hover .projects__card-arrow { transform: translateX(3px); }
+/* ========================= */
+/* ✅ SLIDER + NETFLIX MODE  */
+/* ========================= */
 
-/* Modal */
+.projects__slider {
+  position: relative;
+}
+
+/* ✅ MOBILE SLIDER */
+@media (max-width: 900px) {
+  .projects__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 20px 10px;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .projects__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects__grid {
+    scrollbar-width: none;
+  }
+
+  /* ✅ CARDS */
+  .projects__card {
+    flex: 0 0 260px;
+    min-width: 260px;
+
+    scroll-snap-align: center;
+    transform: scale(0.9);
+    opacity: 0.6;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* ✅ CENTER ACTIVE (HOVER / FOCUS / CLICK) */
+  .projects__card:hover,
+  .projects__card:focus,
+  .projects__card:active {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ✅ SMALL MOBILE FIX */
+@media (max-width: 600px) {
+  .projects {
+    padding: 50px 20px;
+    align-items: flex-start;
+  }
+
+  .projects__title {
+    font-size: 1.4rem;
+  }
+
+  .projects__img-wrap {
+    height: 150px;
+  }
+}
+
+/* ✅ EXTRA SMALL */
+@media (max-width: 380px) {
+  .projects__title {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========================= */
+/* ✅ ARROWS */
+/* ========================= */
+
+.projects__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+
+  background: var(--panel);
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.projects__arrow--left {
+  left: 6px;
+}
+
+.projects__arrow--right {
+  right: 6px;
+}
+
+.projects__arrow:hover {
+  background: var(--violet);
+  color: #fff;
+}
+
+/* Hide on desktop */
+@media (min-width: 901px) {
+  .projects__arrow {
+    display: none;
+  }
+}
+
+/* ========================= */
+/* ✅ MODAL */
+/* ========================= */
+
 .projects__modal-backdrop {
   position: fixed;
   inset: 0;
@@ -101,69 +230,45 @@
   align-items: center;
   justify-content: center;
   z-index: 200;
-  padding: 24px;
+  padding: 20px;
 }
 
 .projects__modal {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 18px;
   max-width: 560px;
   width: 100%;
-  max-height: 86vh;
+  max-height: 85vh;
   overflow-y: auto;
-  padding: 28px;
+  padding: 24px;
   position: relative;
 }
 
 .projects__modal-close {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--panel-2);
-  border: 1px solid var(--line);
-  color: var(--muted);
-  width: 32px;
-  height: 32px;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s, border-color 0.2s;
-}
-
-.projects__modal-close:hover {
-  color: var(--text);
-  border-color: var(--violet-dim);
+  border: 1px solid var(--line);
+  background: var(--panel-2);
 }
 
 .projects__modal-img {
   width: 100%;
-  aspect-ratio: auto;
-  object-fit: cover;
   border-radius: 12px;
-  margin-bottom: 20px;
-  border: 1px solid var(--line);
+  margin-bottom: 18px;
 }
 
 .projects__modal-title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 12px;
-  padding-right: 30px;
 }
 
 .projects__modal-desc {
   color: var(--muted);
-  line-height: 1.7;
-  font-size: 0.96rem;
-}
-
-@media (max-width: 900px) {
-  .projects__grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 560px) {
-  .projects__grid { grid-template-columns: 1fr; }
+  line-height: 1.6;
+  margin-top: 10px;
 }
